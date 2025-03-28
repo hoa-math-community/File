@@ -62,7 +62,7 @@ class Temporary extends File
     public function __construct(
         string $streamName,
         string $mode,
-        string $context = null,
+        ?string $context = null,
         bool $wait      = false
     ) {
         if (null === $streamName) {
@@ -77,7 +77,7 @@ class Temporary extends File
     /**
      * Open the stream and return the associated resource.
      */
-    protected function &_open(string $streamName, Stream\Context $context = null)
+    protected function &_open(string $streamName, ?Stream\Context $context = null)
     {
         if (false === $out = @tmpfile()) {
             throw new File\Exception(
@@ -94,7 +94,7 @@ class Temporary extends File
      * different of calling $this->__construct() that will create a temporary
      * file that will be destroy when calling the $this->close() method.
      */
-    public static function create(string $directory = null, string $prefix = '__hoa_')
+    public static function create(?string $directory = null, string $prefix = '__hoa_')
     {
         if (null === $directory ||
             false === is_dir($directory)) {

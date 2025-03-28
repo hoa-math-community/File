@@ -62,7 +62,7 @@ class Read extends Link implements Stream\IStream\In
     public function __construct(
         string $streamName,
         string $mode    = parent::MODE_READ,
-        string $context = null,
+        ?string $context = null,
         bool $wait    = false
     ) {
         parent::__construct($streamName, $mode, $context, $wait);
@@ -79,7 +79,7 @@ class Read extends Link implements Stream\IStream\In
      * @throws  \Hoa\File\Exception\FileDoesNotExist
      * @throws  \Hoa\File\Exception
      */
-    protected function &_open(string $streamName, Stream\Context $context = null): resource
+    protected function &_open(string $streamName, ?Stream\Context $context = null): resource
     {
         static $createModes = [
             parent::MODE_READ
@@ -199,7 +199,7 @@ class Read extends Link implements Stream\IStream\In
      * @param   string  $format    Format (see printf's formats).
      * @return  array
      */
-    public function readArray(string $format = null)
+    public function readArray(?string $format = null)
     {
         return $this->scanf($format);
     }

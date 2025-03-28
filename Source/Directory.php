@@ -72,7 +72,7 @@ class Directory extends Generic
     public function __construct(
         string $streamName,
         string $mode    = self::MODE_READ,
-        string $context = null,
+        ?string $context = null,
         bool $wait      = false
     ) {
         $this->setMode($mode);
@@ -84,7 +84,7 @@ class Directory extends Generic
     /**
      * Open the stream and return the associated resource.
      */
-    protected function &_open(string $streamName, Stream\Context $context = null)
+    protected function &_open(string $streamName, ?Stream\Context $context = null)
     {
         if (false === is_dir($streamName)) {
             if ($this->getMode() == self::MODE_READ) {
@@ -198,7 +198,7 @@ class Directory extends Generic
     public static function create(
         string $name,
         string $mode    = self::MODE_CREATE_RECURSIVE,
-        string $context = null
+        ?string $context = null
     ): bool {
         if (true === is_dir($name)) {
             return true;

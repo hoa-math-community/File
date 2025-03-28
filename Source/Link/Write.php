@@ -56,7 +56,7 @@ class Write extends Link implements Stream\IStream\Out
     public function __construct(
         string $streamName,
         string $mode    = parent::MODE_APPEND_WRITE,
-        string $context = null,
+        ?string $context = null,
         bool $wait      = false
     ) {
         parent::__construct($streamName, $mode, $context, $wait);
@@ -67,7 +67,7 @@ class Write extends Link implements Stream\IStream\Out
     /**
      * Open the stream and return the associated resource.
      */
-    protected function &_open(string $streamName, Stream\Context $context = null)
+    protected function &_open(string $streamName, ?Stream\Context $context = null)
     {
         static $createModes = [
             parent::MODE_TRUNCATE_WRITE,

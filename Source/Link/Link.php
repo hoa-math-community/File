@@ -54,7 +54,7 @@ class Link extends File
     public function __construct(
         string $streamName,
         string $mode,
-        string $context = null,
+        ?string $context = null,
         bool $wait      = false
     ) {
         if (!is_link($streamName)) {

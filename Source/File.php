@@ -112,7 +112,7 @@ abstract class File extends Generic implements Stream\IStream\Bufferable, Stream
     public function __construct(
         string $streamName,
         string $mode,
-        string $context = null,
+        ?string $context = null,
         bool $wait      = false
     ) {
         $this->setMode($mode);
@@ -156,7 +156,7 @@ abstract class File extends Generic implements Stream\IStream\Bufferable, Stream
     /**
      * Open the stream and return the associated resource.
      */
-    protected function &_open(string $streamName, Stream\Context $context = null)
+    protected function &_open(string $streamName, ?Stream\Context $context = null)
     {
         if (substr($streamName, 0, 4) == 'file' &&
             false === is_dir(dirname($streamName))) {
@@ -209,7 +209,7 @@ abstract class File extends Generic implements Stream\IStream\Bufferable, Stream
      * Start a new buffer.
      * The callable acts like a light filter.
      */
-    public function newBuffer(callable $callable = null, int $size = null): int
+    public function newBuffer(?callable $callable = null, ?int $size = null): int
     {
         $this->setStreamBuffer($size);
 

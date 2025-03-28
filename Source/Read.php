@@ -53,7 +53,7 @@ class Read extends File implements Stream\IStream\In
     public function __construct(
         string $streamName,
         string $mode    = parent::MODE_READ,
-        string $context = null,
+        ?string $context = null,
         bool $wait      = false
     ) {
         parent::__construct($streamName, $mode, $context, $wait);
@@ -64,7 +64,7 @@ class Read extends File implements Stream\IStream\In
     /**
      * Open the stream and return the associated resource.
      */
-    protected function &_open(string $streamName, Stream\Context $context = null)
+    protected function &_open(string $streamName, ?Stream\Context $context = null)
     {
         static $createModes = [
             parent::MODE_READ
@@ -162,7 +162,7 @@ class Read extends File implements Stream\IStream\In
      * Read an array.
      * Alias of the $this->scanf() method.
      */
-    public function readArray(string $format = null)
+    public function readArray(?string $format = null)
     {
         return $this->scanf($format);
     }
